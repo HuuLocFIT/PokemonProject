@@ -1,1 +1,126 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  width: 100vw;
+  background-color: #f5f8fc !important;
+}
+
+// Color pokemon
+.normal {
+  color: #a8a878;
+  border: 0.5px solid #6e6e4e;
+  background-color: #f5f5dc;
+}
+
+.fire {
+  color: #f08030;
+  border: 0.5px solid #e5680f;
+  background-color: #fbe3d4;
+}
+
+.water {
+  color: #6890f0;
+  border: 0.5px solid #4579f2;
+  background-color: #d4e7fb;
+}
+
+.grass {
+  color: #78c850;
+  border: 0.5px solid #40831f;
+  background-color: #e3fbd4;
+}
+
+.electric {
+  color: #f8d030;
+  border: 0.5px solid #e4c135;
+  background-color: #fbf7d4;
+}
+
+.ice {
+  color: #98d8d8;
+  border: 0.5px solid #87dede;
+  background-color: #e0f5f5;
+}
+
+.fighting {
+  color: #c03028;
+  border: 0.5px solid #bb261e;
+  background-color: #fbd4d4;
+}
+
+.poison {
+  color: #a040a0;
+  border: 0.5px solid #993199;
+  background-color: #f5d4f5;
+}
+
+.ground {
+  color: #e0c068;
+  border: 0.5px solid #dbb54f;
+  background-color: #fbedd4;
+}
+
+.flying {
+  color: #a890f0;
+  border: 1px solid #9073e6;
+  background-color: #ece4fb;
+}
+
+.psychic {
+  color: #f85888;
+  border: 0.5px solid #f0356d;
+  background-color: #fbd4e4;
+}
+
+.bug {
+  color: #a8b820;
+  border: 0.5px solid #778213;
+  background-color: #f5fbd4;
+}
+
+.rock {
+  color: #b8a038;
+  border: 0.5px solid #8a792b;
+  background-color: #f5e8d4;
+}
+
+.ghost {
+  color: #705898;
+  border: 0.5px solid #5b4186;
+  background-color: #e6e0f5;
+}
+
+.dark {
+  color: #705848;
+  border: 0.5px solid #5b473a;
+  background-color: #e6ded4;
+}
+
+.dragon {
+  color: #7038f8;
+  border: 0.5px #6b37e4;
+  background-color: #e6d4fb;
+}
+
+.steel {
+  color: #b8b8d0;
+  border: 0.5px solid #aaaad3;
+  background-color: #f5f5fb;
+}
+
+.fairy {
+  color: #ee99ac;
+  border: 0.5px solid #ed7f97;
+  background-color: #fbd4df;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

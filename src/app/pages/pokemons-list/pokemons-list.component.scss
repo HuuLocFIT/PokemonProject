@@ -1,0 +1,155 @@
+.pokemons-list-container {
+  margin: 0 auto;
+
+  p {
+    margin: 0;
+  }
+
+  .mb-4 {
+    margin-bottom: 60px !important;
+  }
+
+  .card-list {
+    width: 100%;
+
+    .card-item {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      height: 100%;
+      border-radius: 20px;
+      padding: 0 10px 10px 10px;
+      cursor: pointer;
+
+      .image-sprite {
+        position: relative;
+        min-height: 40px;
+
+        img {
+          position: absolute;
+          top: -50px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .total {
+        font-weight: 600;
+        color: #ccc;
+        border: 0.5px solid rgb(28, 47, 18);
+        width: fit-content;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin: 10px auto 0 auto;
+      }
+      .name {
+        font-weight: 600;
+        font-size: 18px;
+        margin: 5px 0 10px 0;
+        overflow: hidden;
+        margin: 5px 0 10px 0;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+      }
+
+      .type-list {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        .grass,
+        .normal,
+        .fire,
+        .water,
+        .electric,
+        .ice,
+        .fighting,
+        .poison,
+        .ground,
+        .psychic,
+        .flying,
+        .ghost,
+        .bug,
+        .rock,
+        .dark,
+        .dragon,
+        .steel,
+        .fairy {
+          padding: 5px;
+          border-radius: 10px;
+          font-weight: 600;
+        }
+      }
+    }
+    .card-item:hover {
+      transform: scale(1.05);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .search-filter-sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    .search-container {
+      display: flex;
+      width: 60%;
+
+      .search {
+        width: 60%;
+        position: relative;
+
+        input {
+          border-radius: 10px;
+          padding: 10px 15px;
+          border: 0.5px solid #ccc;
+          width: 100%;
+          outline: none;
+        }
+
+        img {
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    .filter-sort-container {
+      display: flex;
+      gap: 16px;
+      padding-right: 20px;
+
+      .filter-container,
+      .sort-container {
+        border-radius: 10px;
+        position: relative;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .filter-container {
+        background-color: #6890f0;
+      }
+      .sort-container {
+        background-color: #b8b8d0;
+      }
+    }
+  }
+
+  ::ng-deep .ngx-pagination {
+    display: flex;
+    justify-content: center;
+  }
+}

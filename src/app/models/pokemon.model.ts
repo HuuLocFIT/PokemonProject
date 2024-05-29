@@ -25,6 +25,7 @@ const PokemonType = z
   .object({
     id: z.number(),
     name: z.string(),
+    isChecked: z.boolean().optional(),
   })
   .nullable();
 type PokemonType = z.infer<typeof PokemonType>;

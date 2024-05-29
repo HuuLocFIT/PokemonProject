@@ -1,0 +1,40 @@
+<div class="filter-modal-container">
+  <div class="title">
+    <a class="close-btn" (click)="handleCloseModal()">
+      <img
+        class="close-btn-image"
+        [src]="
+          'https://hi-static.fpt.vn/sys/hifpt/pnc_pdx/sale-platform/x-close.svg'
+        "
+        alt="Logo"
+        width="24px"
+        height="24px"
+      />
+    </a>
+    <div>Lọc</div>
+  </div>
+  <div class="body">
+    <div class="type-item-container" *ngFor="let type of pokemonTypesListCopy">
+      <input
+        type="checkbox"
+        id="{{ type?.id }}"
+        [checked]="type?.isChecked"
+        (change)="handleChangeFilter(type)"
+      />
+
+      <label
+        *ngIf="type"
+        for="{{ type.id }}"
+        [ngClass]="getNameFromType(type.id).toLowerCase()"
+      >
+        {{ getNameFromType(type.id) }}
+      </label>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn btn-reset" (click)="handleResetFilter()">Hủy</button>
+    <button class="btn btn-primary" (click)="handleApplyFilter()">
+      Áp dụng
+    </button>
+  </div>
+</div>

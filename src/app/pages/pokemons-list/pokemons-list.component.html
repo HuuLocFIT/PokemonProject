@@ -1,5 +1,88 @@
-<div *ngFor="let pokemon of pokemons">
-  <div class="sprite-container">
-    <img [src]="pokemon.sprite" width="200px" height="200px" />
+<div class="pokemons-list-container">
+  <div class="search-filter-sort-container container">
+    <div class="search-container">
+      <div class="search">
+        <input placeholder="Tìm kiếm" />
+        <img
+          [src]="
+            'https://res.cloudinary.com/dc733dlvp/image/upload/v1716971338/pokemon/search_pk08ju.png'
+          "
+          width="30px"
+          height="30px"
+        />
+      </div>
+    </div>
+    <div class="filter-sort-container">
+      <div class="filter-container" (click)="openFilterModal()">
+        <img
+          [src]="
+            isFiltered
+              ? 'https://res.cloudinary.com/dc733dlvp/image/upload/v1716969491/pokemon/icon-filter-active_ealuzl.svg'
+              : 'https://res.cloudinary.com/dc733dlvp/image/upload/v1716969510/pokemon/icon-filter_gsbqkz.svg'
+          "
+          width="30px"
+          height="30px"
+        />
+      </div>
+      <div class="sort-container">
+        <img
+          [src]="
+            'https://res.cloudinary.com/dc733dlvp/image/upload/v1716970000/pokemon/sort_kg1ghf.png'
+          "
+          width="30px"
+          height="30px"
+        />
+      </div>
+    </div>
   </div>
+  <div class="container">
+    <div class="row card-list">
+      <ng-container
+        *ngFor="
+          let pokemon of pokemons
+            | paginate
+              : {
+                  itemsPerPage: pageSize,
+                  currentPage: pageNumber,
+                  totalItems: metaPokemonsList?.total,
+                }
+        "
+      >
+        <div class="col-2 col-md-2 mb-4">
+          <a
+            class="d-block card-item"
+            style="text-decoration: none; color: inherit"
+          >
+            <div class="image-sprite">
+              <img [src]="pokemon.sprite" width="auto" height="auto" />
+            </div>
+            <p class="total text-center">{{ pokemon.total }}</p>
+            <p class="name text-center">{{ pokemon.name }}</p>
+            <div class="type-list">
+              <div
+                *ngIf="pokemon.type_1 || pokemon.type_1 === 0"
+                [ngClass]="getNameFromType(pokemon.type_1).toLowerCase()"
+              >
+                {{ getNameFromType(pokemon.type_1) }}
+              </div>
+              <div
+                *ngIf="pokemon.type_2 || pokemon.type_2 === 0"
+                style="height: auto"
+                [ngClass]="getNameFromType(pokemon.type_2).toLowerCase()"
+              >
+                {{ getNameFromType(pokemon.type_2) }}
+              </div>
+            </div>
+          </a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <pagination-controls
+    *ngIf="pokemons && pokemons.length > 0"
+    (pageChange)="onPageChange($event)"
+    [autoHide]="true"
+    [maxSize]="6"
+  ></pagination-controls>
 </div>
