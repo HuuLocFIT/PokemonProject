@@ -66,7 +66,7 @@
                 }
         "
       >
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
+        <div class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
           <a
             class="d-block card-item"
             style="text-decoration: none; color: inherit"
@@ -75,7 +75,7 @@
             <div class="image-sprite">
               <img [src]="pokemon.sprite" width="auto" height="auto" />
             </div>
-            <p class="total text-center">{{ pokemon.total }}</p>
+
             <p class="name text-center">{{ pokemon.name }}</p>
             <div class="type-list">
               <div
@@ -92,6 +92,42 @@
                 {{ getNameFromType(pokemon.type_2) }}
               </div>
             </div>
+            <div class="hp-container">
+              <!-- <img
+                class="icon-hp"
+                [src]="
+                  'https://res.cloudinary.com/dc733dlvp/image/upload/v1717088667/pokemon/heart-alt-svgrepo-com_cfyqaj.svg'
+                "
+                width="30px"
+                height="30px"
+              /> -->
+              <div class="label-stat-item">HP</div>
+              <p class="value-stat-item">{{ pokemon.hp }}</p>
+            </div>
+            <div class="attack-container">
+              <!-- <img
+                class="icon-attack"
+                [src]="
+                  'https://res.cloudinary.com/dc733dlvp/image/upload/v1717088667/pokemon/sword-svgrepo-com_wc11w0.svg'
+                "
+                width="30px"
+                height="30px"
+              /> -->
+              <div class="label-stat-item">ATK</div>
+              <p class="value-stat-item">{{ pokemon.attack }}</p>
+            </div>
+            <div class="defense-container">
+              <!-- <img
+                class="icon-defense"
+                [src]="
+                  'https://res.cloudinary.com/dc733dlvp/image/upload/v1717088667/pokemon/shield-alt-svgrepo-com_wcykti.svg'
+                "
+                width="30px"
+                height="30px"
+              /> -->
+              <div class="label-stat-item">DEF</div>
+              <p class="value-stat-item">{{ pokemon.defense }}</p>
+            </div>
           </a>
         </div>
       </ng-container>
@@ -102,6 +138,9 @@
     *ngIf="pokemons && pokemons.length > 0"
     (pageChange)="onPageChange($event)"
     [autoHide]="true"
-    [maxSize]="6"
-  ></pagination-controls>
+    [maxSize]="sizeItemsUIPaginations"
+    previousLabel=""
+    nextLabel=""
+  >
+  </pagination-controls>
 </div>

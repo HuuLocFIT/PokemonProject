@@ -16,7 +16,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class PokemonsListComponent {
   pokemons: Pokemon[] = [];
   pageNumber: number = 1;
-  pageSize: number = 18;
+  pageSize: number = 12;
 
   pokemonTypesList: PokemonType[] = [];
   metaPokemonsList: any = null;
@@ -37,6 +37,7 @@ export class PokemonsListComponent {
   ];
 
   pokemonDetails: Pokemon | null = null;
+  sizeItemsUIPaginations: number = 6;
 
   constructor(
     private pokemonService: PokemonService,
@@ -47,8 +48,11 @@ export class PokemonsListComponent {
   ngOnInit() {
     this.getPokemonsList();
 
-    // TODO: Must base on to CSS Reponsive pagination size
-    console.log(window.innerWidth);
+    if (window.innerWidth < 370 && window.innerWidth >= 280) {
+      this.sizeItemsUIPaginations = 4;
+    } else if (window.innerWidth < 280) {
+      this.sizeItemsUIPaginations = 2;
+    }
   }
 
   getPokemonTypesList(): void {

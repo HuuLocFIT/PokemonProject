@@ -184,3 +184,11 @@
     }
   }
 }
+
+// Responsive
+@media (max-width: 370px) {
+  .stats-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

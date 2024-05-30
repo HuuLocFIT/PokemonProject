@@ -64,3 +64,16 @@
   flex-grow: 1;
   outline: none;
 }
+
+// Responsive
+@media (max-width: 425px) {
+  .sorting-container {
+    flex-direction: column;
+
+    .field-sort-container {
+      flex-direction: column;
+      align-items: flex-start !important;
+      gap: 5px;
+    }
+  }
+}
