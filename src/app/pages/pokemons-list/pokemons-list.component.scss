@@ -18,7 +18,7 @@
       border-radius: 20px;
       padding: 0 10px 10px 10px;
       cursor: pointer;
-
+      transition: all 0.3s ease-in-out;
       .image-sprite {
         position: relative;
         min-height: 40px;
@@ -81,8 +81,7 @@
       }
     }
     .card-item:hover {
-      transform: scale(1.05);
-      transition: all 0.3s ease-in-out;
+      box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
     }
   }
 
@@ -140,7 +139,7 @@
       }
 
       .filter-container {
-        background-color: #6890f0;
+        background-color: #9caedb;
       }
       .sort-container {
         background-color: #b8b8d0;

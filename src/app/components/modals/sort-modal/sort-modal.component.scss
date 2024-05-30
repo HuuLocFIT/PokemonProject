@@ -1,0 +1,66 @@
+.sort-modal-container {
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+
+    .sorting-container {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+
+      .field-sort-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-grow: 1;
+
+        .label-sorting {
+          flex-grow: 1;
+          white-space: nowrap;
+        }
+      }
+      .order-sort-container {
+        label {
+          font-weight: 600;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px;
+
+    .btn-reset {
+      background-color: rgb(233, 58, 58);
+      color: #fff;
+    }
+  }
+}
+
+::ng-deep .sort-modal-container .ng-select-searchable {
+  width: 100%;
+  flex-grow: 1;
+  outline: none;
+}

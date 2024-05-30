@@ -1,6 +1,6 @@
 <div class="pokemons-list-container">
   <div class="search-filter-sort-container container">
-    <div class="search-container">
+    <!-- <div class="search-container">
       <div class="search">
         <input placeholder="Tìm kiếm" />
         <img
@@ -11,6 +11,24 @@
           height="30px"
         />
       </div>
+    </div> -->
+    <div class="title-pokemon-list" style="display: flex; align-items: center">
+      <img
+        src="https://res.cloudinary.com/dc733dlvp/image/upload/v1717038112/pokemon/red_pokemon_ball_gfxqoo.webp"
+        width="30px"
+        height="30px"
+      />
+      <h2 class="title" style="margin: 0 10px">
+        <img
+          src="https://res.cloudinary.com/dc733dlvp/image/upload/v1717038462/pokemon/pokemon-logo_jff7qg.png"
+          height="40px"
+        />
+      </h2>
+      <img
+        src="https://res.cloudinary.com/dc733dlvp/image/upload/v1717038112/pokemon/red_pokemon_ball_gfxqoo.webp"
+        width="30px"
+        height="30px"
+      />
     </div>
     <div class="filter-sort-container">
       <div class="filter-container" (click)="openFilterModal()">
@@ -24,7 +42,7 @@
           height="30px"
         />
       </div>
-      <div class="sort-container">
+      <div class="sort-container" (click)="openSortModal()">
         <img
           [src]="
             'https://res.cloudinary.com/dc733dlvp/image/upload/v1716970000/pokemon/sort_kg1ghf.png'

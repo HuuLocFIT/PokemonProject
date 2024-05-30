@@ -1,1 +1,60 @@
-<p>sort-modal works!</p>
+<div class="sort-modal-container">
+  <div class="title">
+    <a class="close-btn" (click)="handleCloseModal()">
+      <img
+        class="close-btn-image"
+        [src]="
+          'https://hi-static.fpt.vn/sys/hifpt/pnc_pdx/sale-platform/x-close.svg'
+        "
+        alt="Logo"
+        width="24px"
+        height="24px"
+      />
+    </a>
+    <div>Sắp xếp</div>
+  </div>
+  <div class="body">
+    <div class="sorting-container">
+      <div class="field-sort-container">
+        <div class="label-sorting">Sắp xếp theo:</div>
+        <ng-select
+          [items]="sortTypes"
+          bindLabel="name"
+          bindValue="value"
+          [(ngModel)]="sortField"
+          placeholder="Chọn trường sắp xếp"
+        >
+          ></ng-select
+        >
+      </div>
+      <div class="order-sort-container">
+        <div>
+          <input
+            type="radio"
+            id="asc"
+            name="order"
+            value="asc"
+            [(ngModel)]="selectedSortOrder"
+            (ngModelChange)="handleChangeSortOrder($event)"
+          />
+          <label for="asc">A -> Z</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="desc"
+            name="order"
+            value="desc"
+            [(ngModel)]="selectedSortOrder"
+            (ngModelChange)="handleChangeSortOrder($event)"
+          />
+          <label for="desc">Z -> A</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn btn-reset" (click)="handleCloseModal()">Hủy</button>
+    <button class="btn btn-primary" (click)="handleSort()">Áp dụng</button>
+  </div>
+</div>

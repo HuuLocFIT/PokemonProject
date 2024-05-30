@@ -10,6 +10,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterModalComponent } from './components/modals/filter-modal/filter-modal.component';
 import { SortModalComponent } from './components/modals/sort-modal/sort-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgxPaginationModule,
     NgbModule,
+    NgSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

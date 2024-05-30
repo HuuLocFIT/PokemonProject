@@ -4,6 +4,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { Pokemon, PokemonType } from 'src/app/models/pokemon.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilterModalComponent } from 'src/app/components/modals/filter-modal/filter-modal.component';
+import { SortModalComponent } from 'src/app/components/modals/sort-modal/sort-modal.component';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -14,12 +15,24 @@ export class PokemonsListComponent {
   pokemons: Pokemon[] = [];
   pageNumber: number = 1;
   pageSize: number = 18;
-  sortField: string = 'number';
-  sortOrder: string = 'asc';
+
   pokemonTypesList: PokemonType[] = [];
   metaPokemonsList: any = null;
   filteredTypesList: PokemonType[] = [];
   isFiltered: boolean = false;
+
+  sortField: string = '';
+  sortOrder: string = 'asc';
+  readonly sortTypesList: { name: string; value: string }[] = [
+    { name: 'Number', value: 'number' },
+    { name: 'Total', value: 'total' },
+    { name: 'HP', value: 'hp' },
+    { name: 'Attack', value: 'attack' },
+    { name: 'Defense', value: 'defense' },
+    { name: 'Special Attack', value: 'sp_atk' },
+    { name: 'Special Defense', value: 'sp_def' },
+    { name: 'Speed', value: 'speed' },
+  ];
 
   pokemonDetails: Pokemon | null = null;
 
@@ -130,6 +143,23 @@ export class PokemonsListComponent {
             this.filteredTypesList = [];
             this.isFiltered = false;
           }
+          this.getPokemonsList();
+        }
+      },
+      (reason) => {}
+    );
+  }
+  openSortModal(): void {
+    const modalRef = this.modal.open(SortModalComponent);
+    modalRef.componentInstance.sortTypes = this.sortTypesList;
+    modalRef.componentInstance.selectedSortField = this.sortField;
+    modalRef.componentInstance.selectedSortOrder = this.sortOrder;
+    modalRef.result.then(
+      (result) => {
+        if (result) {
+          console.log(result);
+          this.sortField = result.sortField;
+          this.sortOrder = result.sortOrder;
           this.getPokemonsList();
         }
       },
