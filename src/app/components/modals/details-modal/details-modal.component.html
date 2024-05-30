@@ -1,0 +1,86 @@
+<div class="details-modal-container">
+  <div class="title">
+    <a class="close-btn" (click)="handleCloseModal()">
+      <img
+        class="close-btn-image"
+        [src]="
+          'https://hi-static.fpt.vn/sys/hifpt/pnc_pdx/sale-platform/x-close.svg'
+        "
+        alt="Logo"
+        width="24px"
+        height="24px"
+      />
+    </a>
+  </div>
+  <div class="body" [ngClass]="dataPokemon?.legendary ? 'has-margin' : ''">
+    <div *ngIf="dataPokemon" class="details-container">
+      <div class="info-basic">
+        <div class="image-container">
+          <img [src]="dataPokemon.sprite" width="150px" height="150px" />
+          <div *ngIf="dataPokemon.legendary !== 0" class="pokemon-legendary">
+            Legendary
+          </div>
+        </div>
+        <div class="info-container">
+          <p class="title-info">Thông tin</p>
+          <p class="number text-center">Số lượng: {{ dataPokemon.number }}</p>
+          <p class="name text-center">{{ dataPokemon.name }}</p>
+          <p class="generation text-center">
+            {{ getNameAndRegionGeneration(dataPokemon.generation) }}
+          </p>
+          <div class="type-list">
+            <div
+              *ngIf="dataPokemon.type_1 || dataPokemon.type_1 === 0"
+              [ngClass]="getNameFromType(dataPokemon.type_1).toLowerCase()"
+            >
+              {{ getNameFromType(dataPokemon.type_1) }}
+            </div>
+            <div
+              *ngIf="dataPokemon.type_2 || dataPokemon.type_2 === 0"
+              style="height: auto"
+              [ngClass]="getNameFromType(dataPokemon.type_2).toLowerCase()"
+            >
+              {{ getNameFromType(dataPokemon.type_2) }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <p class="title-stats">Chỉ số</p>
+        <div class="stats-container">
+          <div class="stats-wrapper" style="display: flex; gap: 20px">
+            <div class="stat-item">
+              <p class="name hp">HP</p>
+              <div class="value">{{ dataPokemon.hp }}</div>
+            </div>
+            <div class="stat-item">
+              <p class="name atk">ATK</p>
+              <div class="value">{{ dataPokemon.attack }}</div>
+            </div>
+            <div class="stat-item">
+              <p class="name def">DEF</p>
+              <div class="value">{{ dataPokemon.defense }}</div>
+            </div>
+            <div class="stat-item">
+              <p class="name spa">SpA</p>
+              <div class="value">{{ dataPokemon.sp_atk }}</div>
+            </div>
+            <div class="stat-item">
+              <p class="name spd">SpD</p>
+              <div class="value">{{ dataPokemon.sp_def }}</div>
+            </div>
+            <div class="stat-item">
+              <p class="name spe">SPE</p>
+              <div class="value">{{ dataPokemon.speed }}</div>
+            </div>
+          </div>
+        </div>
+        <p class="total text-center">
+          <span>Tổng cộng:</span>
+          <span class="num-total">{{ dataPokemon.total }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,10 @@ import { SortModalComponent } from './components/modals/sort-modal/sort-modal.co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { DetailsModalComponent } from './components/modals/details-modal/details-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerLayoutComponent } from './components/spinner-layout/spinner-layout.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { FormsModule } from '@angular/forms';
     PageNotFoundComponent,
     FilterModalComponent,
     SortModalComponent,
+    DetailsModalComponent,
+    SpinnerLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,8 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     NgSelectModule,
     FormsModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

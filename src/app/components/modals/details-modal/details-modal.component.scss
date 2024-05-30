@@ -1,0 +1,186 @@
+.details-modal-container {
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+
+    .close-btn {
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    width: 100%;
+
+    &.has-margin {
+      margin-top: 20px;
+    }
+
+    .details-container {
+      width: 100%;
+      padding: 10px;
+
+      .title-stats,
+      .title-info {
+        font-weight: 600;
+        text-align: center !important;
+        font-size: 25px;
+      }
+
+      .title-info {
+        margin-top: 30px;
+      }
+
+      .info-basic {
+        .image-container {
+          border: 0.5px solid #ccc;
+          border-radius: 50%;
+          background-color: #ebeff1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 200px;
+          height: 200px;
+          margin: 0 auto;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          position: relative;
+
+          .pokemon-legendary {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: gold;
+            border: 2px solid darkorange;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+          }
+        }
+        .info-container {
+          .number {
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin: 0px auto 10px auto;
+            border: 0.5px solid #ccc;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+          }
+          .name {
+            font-weight: 600;
+            font-size: 18px;
+            margin: 5px 0 10px 0;
+            overflow: hidden;
+            margin: 5px 0 10px 0;
+            text-overflow: ellipsis;
+            width: 100%;
+            white-space: nowrap;
+          }
+          .type-list {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+
+            .grass,
+            .normal,
+            .fire,
+            .water,
+            .electric,
+            .ice,
+            .fighting,
+            .poison,
+            .ground,
+            .psychic,
+            .flying,
+            .ghost,
+            .bug,
+            .rock,
+            .dark,
+            .dragon,
+            .steel,
+            .fairy {
+              padding: 5px;
+              border-radius: 10px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .stats {
+        margin-top: 30px;
+
+        .stats-container {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          align-items: center;
+
+          .stat-item {
+            display: flex;
+            flex-direction: column;
+            width: 40px;
+            justify-content: space-around;
+            background-color: #dedbdb;
+            border-radius: 20px;
+            align-items: center;
+
+            .value {
+              font-weight: 600;
+              margin-bottom: 4px;
+            }
+            .name {
+              line-height: 2.5;
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              text-align: center;
+              background-color: red;
+              margin-top: 4px;
+              font-weight: 600;
+              color: #f9ebeb;
+              font-size: 14px;
+
+              &.hp {
+                background-color: #df2140;
+              }
+              &.atk {
+                background-color: #ff974a;
+              }
+              &.def {
+                background-color: #dcba35;
+              }
+              &.spa {
+                background-color: #45c4f6;
+              }
+              &.spd {
+                background-color: #fba4b4;
+              }
+              &.spe {
+                background-color: #4bbc12;
+              }
+            }
+          }
+        }
+        .stats-wrapper {
+          border-bottom: 0.5px solid #ccc;
+          padding-bottom: 12px;
+        }
+
+        .total {
+          font-weight: 600;
+          text-align: center;
+          font-size: 20px;
+          margin-top: 10px;
+
+          .num-total {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}

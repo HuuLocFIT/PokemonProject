@@ -1,4 +1,5 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "bootstrap/scss/bootstrap";
 
 * {
   box-sizing: border-box;
@@ -125,4 +126,30 @@ body {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import "bootstrap/scss/bootstrap";
+.ngx-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  li {
+    border: 0.1px solid #ccc;
+    border-radius: 10px !important;
+
+    a {
+      text-decoration: none !important;
+    }
+  }
+  li a:hover {
+    border-radius: 10px !important;
+  }
+
+  .pagination-previous,
+  .pagination-next {
+    border: 0.1px solid #ccc;
+    border-radius: 10px;
+
+    a {
+      text-decoration: none !important;
+    }
+  }
+}

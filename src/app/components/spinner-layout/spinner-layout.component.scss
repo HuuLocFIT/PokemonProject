@@ -1,0 +1,142 @@
+.animation-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 9999;
+
+  .bg-popup {
+    background: #8b8b8b;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+  }
+  .animation-content-popup {
+    z-index: 100;
+    .circle {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      border-radius: 50%;
+      border: 1.2px solid #1bbaff;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .check-bt-time {
+        font-weight: 500;
+        font-size: 32px;
+        color: #ffffff;
+        position: absolute;
+        bottom: -75px;
+        width: 100%;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .check-bt {
+        font-weight: 500;
+        font-size: 16px;
+        color: #ffffff;
+        position: absolute;
+        bottom: -100px;
+        white-space: nowrap;
+      }
+      span,
+      p {
+        font-size: 40px;
+        line-height: 140%;
+        color: #ffffff;
+      }
+      p {
+        font-size: 40px;
+        line-height: 140%;
+        color: #ffffff;
+      }
+
+      .btnCheckFailLoading {
+        padding: 8px;
+        border-radius: 8px;
+        background: #ff8840;
+        color: #fff;
+        border: 1px solid #ff7e07;
+        width: 100px;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        z-index: 99999;
+      }
+      &:before {
+        content: "";
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        width: calc(100% + 60px);
+        height: calc(100% + 60px);
+        background: url("https://hi-static.fpt.vn/sys/hifpt/pnc_pdx/trial-service/running-1.gif");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      &:after {
+        content: "";
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateZ(30deg);
+        position: absolute;
+        width: calc(100% + 80px);
+        height: calc(100% + 80px);
+        background: url("https://hi-static.fpt.vn/sys/hifpt/pnc_pdx/trial-service/running-2.gif");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}
+.shake-text {
+  display: inline-block;
+  animation: zoom 2s ease-in-out infinite;
+  animation-delay: 2s;
+}
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+  75% {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

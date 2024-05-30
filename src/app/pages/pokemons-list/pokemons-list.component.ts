@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { catchError, EMPTY, forkJoin, map, mergeMap, of } from 'rxjs';
+import { catchError, EMPTY, finalize, forkJoin, map, mergeMap, of } from 'rxjs';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Pokemon, PokemonType } from 'src/app/models/pokemon.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilterModalComponent } from 'src/app/components/modals/filter-modal/filter-modal.component';
 import { SortModalComponent } from 'src/app/components/modals/sort-modal/sort-modal.component';
+import { DetailsModalComponent } from 'src/app/components/modals/details-modal/details-modal.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -38,24 +40,28 @@ export class PokemonsListComponent {
 
   constructor(
     private pokemonService: PokemonService,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
     this.getPokemonsList();
-    this.getPokemonTypesList();
+
+    // TODO: Must base on to CSS Reponsive pagination size
+    console.log(window.innerWidth);
   }
 
   getPokemonTypesList(): void {
+    this.spinner.show();
     this.pokemonService.getPokemonTypesList().subscribe((response) => {
+      this.spinner.hide();
       if (response.success === true && response.data) {
         this.pokemonTypesList = response.data;
-
-        // this.openFilterModal();
       }
     });
   }
   getPokemonsList(): void {
+    this.spinner.show();
     this.pokemonService
       .getPokemonsList(
         this.pageNumber,
@@ -84,11 +90,16 @@ export class PokemonsListComponent {
             return forkJoin(spriteObservables);
           }
           return EMPTY;
+        }),
+        finalize(() => {
+          this.spinner.hide();
         })
       )
       .subscribe((pokemonsWithSprites: Pokemon[]) => {
         if (pokemonsWithSprites && pokemonsWithSprites.length > 0) {
           this.pokemons = pokemonsWithSprites;
+
+          this.getPokemonTypesList();
         }
       });
   }
@@ -98,7 +109,8 @@ export class PokemonsListComponent {
     );
     return type ? type.name : '';
   }
-  getPokemonDetails(pokemonId: string): void {
+  getPokemonDetails(pokemonId: string, isOpenDetailsPop?: boolean): void {
+    this.spinner.show();
     this.pokemonService
       .getPokemon(pokemonId)
       .pipe(
@@ -116,11 +128,18 @@ export class PokemonsListComponent {
             );
           }
           return EMPTY;
+        }),
+        finalize(() => {
+          this.spinner.hide();
         })
       )
       .subscribe((pokemonWithSprite: Pokemon) => {
         if (pokemonWithSprite) {
           this.pokemonDetails = pokemonWithSprite;
+
+          if (isOpenDetailsPop) {
+            this.openDetailsModal();
+          }
         }
       });
   }
@@ -143,6 +162,7 @@ export class PokemonsListComponent {
             this.filteredTypesList = [];
             this.isFiltered = false;
           }
+          this.pageNumber = 1;
           this.getPokemonsList();
         }
       },
@@ -165,6 +185,17 @@ export class PokemonsListComponent {
       },
       (reason) => {}
     );
+  }
+  openDetailsModal() {
+    if (this.pokemonDetails) {
+      const modalRef = this.modal.open(DetailsModalComponent);
+      modalRef.componentInstance.dataPokemon = this.pokemonDetails;
+      modalRef.componentInstance.pokemonTypesList = this.pokemonTypesList;
+      modalRef.result.then(
+        (result) => {},
+        (reason) => {}
+      );
+    }
   }
 
   ngOnDestroy() {}
