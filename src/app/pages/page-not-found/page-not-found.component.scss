@@ -1,0 +1,13 @@
+.page-not-found-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #b1ecc2;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
