@@ -23,7 +23,9 @@
   }
   .type-item-container {
     display: flex;
+    align-items: center;
     gap: 10px;
+    width: 92px;
 
     input {
       outline: none;
