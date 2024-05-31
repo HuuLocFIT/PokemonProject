@@ -9,11 +9,13 @@ html {
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
 }
 
 body {
   width: 100vw;
   background-color: #f5f8fc !important;
+  overflow-x: hidden;
 }
 
 // Color pokemon
