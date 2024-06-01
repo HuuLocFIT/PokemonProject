@@ -75,10 +75,7 @@ export class DetailsModalComponent {
     return generation ? `${generation.name} - ${generation.region}` : '';
   }
 
-  ngOnInit() {
-    console.log(this.dataPokemon);
-    console.log(this.pokemonTypesList);
-  }
+  ngOnInit() {}
 
   handleCloseModal() {
     this.activeModal.close();

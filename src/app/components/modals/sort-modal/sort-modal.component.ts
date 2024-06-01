@@ -23,8 +23,6 @@ export class SortModalComponent {
     if (this.selectedSortOrder !== '') {
       this.sortOrder = this.selectedSortOrder;
     }
-
-    console.log(this.sortOrder, this.sortField);
   }
 
   handleChangeSortOrder(e: any) {

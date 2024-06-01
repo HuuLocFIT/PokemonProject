@@ -71,6 +71,7 @@
             class="d-block card-item"
             style="text-decoration: none; color: inherit"
             (click)="getPokemonDetails(pokemon.id, true)"
+            [ngClass]="pokemon.legendary !== 0 ? 'gradient-border' : ''"
           >
             <div class="image-sprite">
               <img [src]="pokemon.sprite" width="auto" height="auto" />
@@ -138,7 +139,8 @@
     *ngIf="pokemons && pokemons.length > 0"
     (pageChange)="onPageChange($event)"
     [autoHide]="true"
-    [maxSize]="sizeItemsUIPaginations"
+    [maxSize]="6"
+    [responsive]="true"
     previousLabel=""
     nextLabel=""
   >

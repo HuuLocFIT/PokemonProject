@@ -133,6 +133,11 @@ body {
   justify-content: center;
   gap: 10px;
 
+  .small-screen {
+    padding: 0 10px !important;
+    line-height: 2;
+  }
+
   li {
     border: 0.1px solid #ccc;
     border-radius: 10px !important;

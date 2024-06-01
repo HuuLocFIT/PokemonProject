@@ -37,7 +37,6 @@ export class PokemonsListComponent {
   ];
 
   pokemonDetails: Pokemon | null = null;
-  sizeItemsUIPaginations: number = 6;
 
   constructor(
     private pokemonService: PokemonService,
@@ -47,12 +46,6 @@ export class PokemonsListComponent {
 
   ngOnInit() {
     this.getPokemonsList();
-
-    if (window.innerWidth < 370 && window.innerWidth >= 280) {
-      this.sizeItemsUIPaginations = 4;
-    } else if (window.innerWidth < 280) {
-      this.sizeItemsUIPaginations = 2;
-    }
   }
 
   getPokemonTypesList(): void {
@@ -181,7 +174,6 @@ export class PokemonsListComponent {
     modalRef.result.then(
       (result) => {
         if (result) {
-          console.log(result);
           this.sortField = result.sortField;
           this.sortOrder = result.sortOrder;
           this.getPokemonsList();
