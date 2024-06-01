@@ -1,0 +1,40 @@
+.confirm-dialog-container {
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    .message {
+      padding-left: 10px;
+      margin: 0;
+      color: #706e6e;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+
+    .btn-confirm {
+      padding: 8px 20px;
+      outline: none;
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}

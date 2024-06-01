@@ -1,0 +1,24 @@
+<div class="confirm-dialog-container">
+  <div class="title">
+    <a class="close-btn" (click)="handleCloseModal()">
+      <img
+        class="close-btn-image"
+        [src]="
+          'https://hi-static.fpt.vn/sys/hifpt/pnc_pdx/sale-platform/x-close.svg'
+        "
+        alt="Logo"
+        width="24px"
+        height="24px"
+      />
+    </a>
+    <div>{{ title }}</div>
+  </div>
+  <div class="body">
+    <p class="message">{{ message }}</p>
+  </div>
+  <div class="footer">
+    <button class="btn btn-primary btn-confirm" (click)="handleCloseModal()">
+      Đóng
+    </button>
+  </div>
+</div>

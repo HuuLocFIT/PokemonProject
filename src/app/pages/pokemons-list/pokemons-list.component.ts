@@ -7,6 +7,7 @@ import { FilterModalComponent } from 'src/app/components/modals/filter-modal/fil
 import { SortModalComponent } from 'src/app/components/modals/sort-modal/sort-modal.component';
 import { DetailsModalComponent } from 'src/app/components/modals/details-modal/details-modal.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -41,7 +42,8 @@ export class PokemonsListComponent {
   constructor(
     private pokemonService: PokemonService,
     private modal: NgbModal,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private confirmDialog: ConfirmDialogService
   ) {}
 
   ngOnInit() {
@@ -50,12 +52,26 @@ export class PokemonsListComponent {
 
   getPokemonTypesList(): void {
     this.spinner.show();
-    this.pokemonService.getPokemonTypesList().subscribe((response) => {
-      this.spinner.hide();
-      if (response.success === true && response.data) {
-        this.pokemonTypesList = response.data;
+    this.pokemonService.getPokemonTypesList().subscribe(
+      (response) => {
+        this.spinner.hide();
+        if (response.success === true && response.data) {
+          this.pokemonTypesList = response.data;
+        } else {
+          this.confirmDialog.show(
+            'Thông báo',
+            'Lỗi hệ thống. Vui lòng thử lại sau.'
+          );
+        }
+      },
+      (error) => {
+        this.spinner.hide();
+        this.confirmDialog.show(
+          'Thông báo',
+          'Lỗi hệ thống. Vui lòng thử lại sau.'
+        );
       }
-    });
+    );
   }
   getPokemonsList(): void {
     this.spinner.show();
@@ -85,6 +101,11 @@ export class PokemonsListComponent {
               )
             );
             return forkJoin(spriteObservables);
+          } else {
+            this.confirmDialog.show(
+              'Thông báo',
+              'Lỗi hệ thống. Vui lòng thử lại sau.'
+            );
           }
           return EMPTY;
         }),
@@ -92,13 +113,22 @@ export class PokemonsListComponent {
           this.spinner.hide();
         })
       )
-      .subscribe((pokemonsWithSprites: Pokemon[]) => {
-        if (pokemonsWithSprites && pokemonsWithSprites.length > 0) {
-          this.pokemons = pokemonsWithSprites;
+      .subscribe(
+        (pokemonsWithSprites: Pokemon[]) => {
+          if (pokemonsWithSprites && pokemonsWithSprites.length > 0) {
+            this.pokemons = pokemonsWithSprites;
 
-          this.getPokemonTypesList();
+            this.getPokemonTypesList();
+          }
+        },
+        (error) => {
+          this.spinner.hide();
+          this.confirmDialog.show(
+            'Thông báo',
+            'Lỗi hệ thống. Vui lòng thử lại sau.'
+          );
         }
-      });
+      );
   }
   getNameFromType(typeId: number): string {
     const type = this.pokemonTypesList.find(
@@ -123,6 +153,11 @@ export class PokemonsListComponent {
                 return of({ ...pokemon, sprite: '' });
               })
             );
+          } else {
+            this.confirmDialog.show(
+              'Thông báo',
+              'Lỗi hệ thống. Vui lòng thử lại sau.'
+            );
           }
           return EMPTY;
         }),
@@ -130,15 +165,24 @@ export class PokemonsListComponent {
           this.spinner.hide();
         })
       )
-      .subscribe((pokemonWithSprite: Pokemon) => {
-        if (pokemonWithSprite) {
-          this.pokemonDetails = pokemonWithSprite;
+      .subscribe(
+        (pokemonWithSprite: Pokemon) => {
+          if (pokemonWithSprite) {
+            this.pokemonDetails = pokemonWithSprite;
 
-          if (isOpenDetailsPop) {
-            this.openDetailsModal();
+            if (isOpenDetailsPop) {
+              this.openDetailsModal();
+            }
           }
+        },
+        (error) => {
+          this.spinner.hide();
+          this.confirmDialog.show(
+            'Thông báo',
+            'Lỗi hệ thống. Vui lòng thử lại sau.'
+          );
         }
-      });
+      );
   }
 
   onPageChange(pageNumber: number): void {

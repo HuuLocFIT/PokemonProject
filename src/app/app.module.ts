@@ -16,6 +16,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DetailsModalComponent } from './components/modals/details-modal/details-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpinnerLayoutComponent } from './components/spinner-layout/spinner-layout.component';
+import { ConfirmDialogComponent } from './components/modals/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SpinnerLayoutComponent } from './components/spinner-layout/spinner-layo
     SortModalComponent,
     DetailsModalComponent,
     SpinnerLayoutComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
